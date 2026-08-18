@@ -79,6 +79,11 @@ param smtpFQDN string = ''
 param smtpPort string = ''
 @description('The email address to use as the sender for outgoing emails.')
 param smtpFromEmailAddress string = ''
+@description('SMTP username.')
+param smtpUser string = ''
+@secure()
+@description('SMTP password.')
+param smtpPassword string = ''
 
 param appServiceSkuName string = 'P0v3'
 
