@@ -88,7 +88,21 @@ echo "Updating database connection info in database.php" >> /home/site/log-$stam
 
 cd /home/site/wwwroot
 
-wget --no-check-certificate https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+# 1. Download the three root certificates
+wget -O DigiCertGlobalRootCA.crt.pem https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+wget -O DigiCertGlobalRootG2.crt.pem https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem
+wget -O MicrosoftRSARootCertificateAuthority2017.crt "https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt"
+
+# 2. Convert the Microsoft cert from DER to PEM format
+openssl x509 -inform der -in MicrosoftRSARootCertificateAuthority2017.crt -out MicrosoftRSARootCertificateAuthority2017.crt.pem
+
+# 3. Concatenate all three into a single chain file
+cat DigiCertGlobalRootCA.crt.pem \
+    DigiCertGlobalRootG2.crt.pem \
+    MicrosoftRSARootCertificateAuthority2017.crt.pem \
+    > DigiCertGlobalRootCA.crt.pem.chain
+
+#wget --no-check-certificate https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 
 sed -i "s|hostname[[:space:]]*= '';|hostname = getenv('DBHostName');|" database.php
 sed -i "s|db[[:space:]]*= '';|db = getenv('DBName');|" database.php

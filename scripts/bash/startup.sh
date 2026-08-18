@@ -8,7 +8,7 @@ echo "Custom container startup"
 #
 ####################################################################################
 
-apt-get update -qq && apt-get install cron sendmail unzip -yqq
+apt-get update -qq && apt-get install cron sendmail unzip openssl -yqq
 
 ####################################################################################
 #
