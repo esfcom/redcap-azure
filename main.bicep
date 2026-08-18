@@ -472,6 +472,8 @@ module webAppModule './modules/webapp/main.bicep' = {
     prerequisiteCommand: prerequisiteCommand
 
     smtpFQDN: smtpFQDN
+    smtpUser: smtpUser
+    smtpPassword: smtpPassword
     smtpFromEmailAddress: smtpFromEmailAddress
     smtpPort: smtpPort
 
