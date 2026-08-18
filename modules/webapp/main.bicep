@@ -19,6 +19,9 @@ param availabilityZonesEnabled bool = false
 
 param smtpFQDN string = ''
 param smtpPort string = ''
+param smtpUser string = ''
+@secure()
+param smtpPassword string = ''
 param smtpFromEmailAddress string = ''
 
 #disable-next-line secure-secrets-in-params
@@ -92,6 +95,8 @@ module appService 'webapp.bicep' = {
     storageAccountName: storageAccountName
 
     smtpFQDN: smtpFQDN
+    smtpUser: smtpUser
+    smtpPassword: smtpPassword
     smtpFromEmailAddress: smtpFromEmailAddress
     smtpPort: smtpPort
 

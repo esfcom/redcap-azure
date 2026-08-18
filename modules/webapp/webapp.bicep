@@ -34,6 +34,9 @@ param enablePrivateEndpoint bool
 
 param smtpFQDN string = ''
 param smtpPort string = ''
+param smtpUser string = ''
+@secure()
+param smtpPassword string = ''
 param smtpFromEmailAddress string = ''
 
 param timeZone string = 'UTC'
@@ -129,6 +132,14 @@ resource webApp 'Microsoft.Web/sites@2023-12-01' = {
         {
           name: 'smtpPort'
           value: smtpPort
+        }
+        {
+          name: 'smtpUser'
+          value: smtpUser
+        }
+        {
+          name: 'smtpPassword'
+          value: smtpPassword
         }
         {
           name: 'fromEmailAddress'
