@@ -86,7 +86,7 @@ rm -f $redcapZipPath
 
 echo "Updating database connection info in database.php" >> /home/site/log-$stamp.txt
 
-cd /home/site/wwwroot
+cd /tmp
 
 # 1. Download the three root certificates
 wget -O DigiCertGlobalRootCA.crt.pem https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
@@ -100,8 +100,9 @@ openssl x509 -inform der -in MicrosoftRSARootCertificateAuthority2017.crt -out M
 cat DigiCertGlobalRootCA.crt.pem \
     DigiCertGlobalRootG2.crt.pem \
     MicrosoftRSARootCertificateAuthority2017.crt.pem \
-    > DigiCertGlobalRootCA.crt.pem.chain
+    > /home/site/wwwroot/DigiCertGlobalRootCA.crt.pem
 
+cd /home/site/wwwroot
 #wget --no-check-certificate https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 
 sed -i "s|hostname[[:space:]]*= '';|hostname = getenv('DBHostName');|" database.php
