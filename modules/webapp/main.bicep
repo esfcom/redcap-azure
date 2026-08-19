@@ -3,7 +3,7 @@ param location string = resourceGroup().location
 param webAppName string
 param appServicePlanName string
 param skuName string
-param linuxFxVersion string = 'php|8.2'
+param linuxFxVersion string = 'php|8.4'
 param dbHostName string
 #disable-next-line secure-secrets-in-params
 param dbUserNameSecretRef string
