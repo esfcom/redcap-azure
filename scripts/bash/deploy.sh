@@ -21,7 +21,7 @@ stamp=$(date +%Y-%m-%d-%H-%M)
 
 echo "Configuring mysqli extension" >> /home/site/log-$stamp.txt
 mkdir -p /home/site/ini
-echo "extension=/usr/local/lib/php/extensions/no-debug-non-zts-20220829/mysqli.so" >> /home/site/ini/extensions.ini
+echo "extension=/usr/local/lib/php/extensions/no-debug-non-zts-20250925/mysqli.so" >> /home/site/ini/extensions.ini
 
 ####################################################################################
 #
