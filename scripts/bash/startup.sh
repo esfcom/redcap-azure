@@ -30,4 +30,16 @@ sed -i "s|date.timezone=UTC|date.timezone=$WEBSITE_TIME_ZONE|" /usr/local/etc/ph
 service cron start
 (crontab -l 2>/dev/null; echo "* * * * * /usr/local/bin/php /home/site/wwwroot/cron.php > /dev/null")|crontab
 
+####################################################################################
+#
+# Configure Sendmail for SMTP relay WSU
+#
+####################################################################################
+cp /home/site/repository/config/sendmail.mc /etc/mail/sendmail.mc
+m4 /etc/mail/sendmail.mc > /etc/mail/sendmail.cf
+
+printf 'AuthInfo:smtp.office365.com "U:root" "I:%s" "P:%s" "M:LOGIN"\n' "$APPSETTING_smtpUser" "$APPSETTING_smtpPassword" > /etc/mail/authinfo
+makemap hash /etc/mail/authinfo < /etc/mail/authinfo
+chmod 600 /etc/mail/authinfo
+
 service sendmail start

@@ -131,17 +131,6 @@ cp /home/site/repository/Files/settings.ini /home/site/ini/redcap.ini
 
 ####################################################################################
 #
-# Configure Sendmail for SMTP relay WSU
-#
-####################################################################################
-cp /home/site/repository/Files/sendmail.mc /etc/mail/sendmail.mc
-m4 sendmail.mc > sendmail.cf
-
-printf 'AuthInfo:smtp.office365.com "U:root" "I:%s" "P:%s" "M:LOGIN"\n' "$APPSETTING_smtpUser" "$APPSETTING_smtpPassword" > authinfo
-makemap hash authinfo < authinfo
-
-####################################################################################
-#
 # For better security, it is recommended that you enable the 
 # session.cookie_secure option in your web server's PHP.INI file
 #
