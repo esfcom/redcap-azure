@@ -225,6 +225,8 @@ var secrets = {
   sqlPassword: sqlPassword
   redcapCommunityUsername: redcapCommunityUsername
   redcapCommunityPassword: redcapCommunityPassword
+  smtpUser: smtpUser
+  smtpPassword: smtpPassword
 }
 
 var resourceTypes = [
@@ -456,12 +458,16 @@ module webAppModule './modules/webapp/main.bicep' = {
     dbHostName: mySqlModule.outputs.fqdn
     dbName: mySqlModule.outputs.databaseName
 
-    dbUserNameSecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[2]
-    dbPasswordSecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[3]
-
+    dbUserNameSecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[4]
+    dbPasswordSecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[5]
+    
     redcapCommunityUsernameSecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[1]
     redcapCommunityPasswordSecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[0]
-    redcapVersion: redcapVersion
+    
+    storageAccountKeySecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[6]
+
+    smtpUser: kvSecretReferencesModule.outputs.keyVaultRefs[3]
+    smtpPassword: kvSecretReferencesModule.outputs.keyVaultRefs[2]
 
     storageAccountKeySecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[4]
     storageAccountContainerName: storageAccountModule.outputs.containerName

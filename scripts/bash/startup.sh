@@ -8,7 +8,7 @@ echo "Custom container startup"
 #
 ####################################################################################
 
-apt-get update -qq && apt-get install cron sendmail unzip openssl -yqq
+apt-get update -qq && apt-get install cron sendmail unzip openssl libsasl2-modules -yqq
 
 ####################################################################################
 #
@@ -29,3 +29,5 @@ sed -i "s|date.timezone=UTC|date.timezone=$WEBSITE_TIME_ZONE|" /usr/local/etc/ph
 
 service cron start
 (crontab -l 2>/dev/null; echo "* * * * * /usr/local/bin/php /home/site/wwwroot/cron.php > /dev/null")|crontab
+
+service sendmail start
