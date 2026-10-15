@@ -469,7 +469,6 @@ module webAppModule './modules/webapp/main.bicep' = {
     smtpUser: kvSecretReferencesModule.outputs.keyVaultRefs[3]
     smtpPassword: kvSecretReferencesModule.outputs.keyVaultRefs[2]
 
-    storageAccountKeySecretRef: kvSecretReferencesModule.outputs.keyVaultRefs[4]
     storageAccountContainerName: storageAccountModule.outputs.containerName
     storageAccountName: storageAccountModule.outputs.name
 
