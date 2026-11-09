@@ -401,7 +401,7 @@ module mySqlModule './modules/sql/main.bicep' = {
     existingPrivateDnsZonesResourceGroupId: existingPrivateDnsZonesResourceGroupId
     sqlAdminUser: sqlAdmin
     sqlAdminPasword: sqlPassword
-    mysqlVersion: '8.0.21'
+    mysqlVersion: '8.4.12'
     // TODO: Consider using workloadname + 'db'
     databaseName: 'redcapdb'
 

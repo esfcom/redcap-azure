@@ -20,7 +20,7 @@ param deploymentScriptName string
 @allowed([
   '8.0.21'
 ])
-param mysqlVersion string = '8.0.21'
+param mysqlVersion string = ''8.4.12'
 
 @secure()
 param sqlAdminPasword string

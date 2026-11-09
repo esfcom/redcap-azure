@@ -42,7 +42,7 @@ param adminPassword string
   '5.7'
   '8.0.21'
 ])
-param mysqlVersion string = '8.0.21'
+param mysqlVersion string = ''8.4.12'
 
 @allowed([
   'Enabled'
